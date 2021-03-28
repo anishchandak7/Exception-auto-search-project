@@ -43,16 +43,18 @@ def fetch_links(test_cmd = None,script_type = 'python'):
     stdout, stderr = execute(test_cmd)
     error_message = stderr.decode("UTF-8").strip().split("\r\n")
     
-    json_output = fetch_json(error_message=error_message[-1],tag = script_type)
-    
-    links = []
-    count = 5
-    for item in json_output['items']:
+    if error_message:
+        json_output = fetch_json(error_message=error_message[-1],tag = script_type)
         
-        if(item['is_answered']==True and count>0 and script_type in item['tags']):
-            links.append(item['link'])
-            count-=1
-    return links
-        
+        links = []
+        count = 5
+        for item in json_output['items']:
+            
+            if(item['is_answered']==True and count>0 and script_type in item['tags']):
+                links.append(item['link'])
+                count-=1
+        return links
+    else:
+        return None
         
     
