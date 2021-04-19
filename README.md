@@ -1,4 +1,4 @@
-# Stackoverflow-Auto-Search-Project or Exception - Auto - Search
+# Exceptions Auto - Search Project
 
 Steps to follow:
 
